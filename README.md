@@ -16,7 +16,7 @@ Herokuが30分アクセスが無いとアプリが落ちてしまうのですが
 
 http://[あなたがデプロイしたアプリ名].herokuapp.com/sites/new から登録可能です。
 
-### 3. URL登録が終わったら、Web Dynoを0にして、heroku schedulerにセットする。
+### 3. Web Dynoを0にし、heroku schedulerをセットする。
 
 #### 3-1. Web Dynoを0にする。
 
@@ -33,11 +33,13 @@ Heroku Schedulerアドオンを開き、以下のコマンドを設定し、10�
 rake patrol:all
 ```
 
-### 4. アプリのログと対象URLが入っているログを確認して動作していれば成功！！
+### 4. ログを確認する。
+
+対象アプリのログと当アプリのログを確認し、正しく動作していれば成功です！！
 
 ## その他
 
-### BASIC認証がかけるれます。
+### BASIC認証が設定できます。
 
 ```
 heroku config:set ENABLE_BASIC_AUTH=1 BASIC_AUTH_ID=AAA BASIC_AUTH_PASS=BBB -a YOUR_APP_NAME
