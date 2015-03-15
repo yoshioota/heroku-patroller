@@ -1,0 +1,17 @@
+h1 結果一覧
+
+table.table
+  thead
+    tr
+      th ID
+      th 内容
+      th サイト
+      th
+
+  tbody
+    - @results.each do |result|
+      tr
+        td = link_to result.id, result
+        td = truncate result.response_body
+        td = link_to result.site.url, result.site
+        td = link_to 'Destroy', result, data: {:confirm => 'Are you sure?'}, :method => :delete

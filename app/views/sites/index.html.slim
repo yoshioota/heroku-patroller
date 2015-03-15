@@ -1,0 +1,19 @@
+h1
+  |サイト一覧
+  = link_to 'サイト追加', new_site_path, class: 'btn btn-default btn-sm'
+
+table.table
+  thead
+    tr
+      th Url
+      th 最終更新時刻
+      th
+      th
+
+  tbody
+    - @sites.each do |site|
+      tr
+        td = link_to site.url, site
+        td = site.results.sort_by(&:id).last.created_at
+        td = link_to 'Edit', edit_site_path(site)
+        td = link_to 'Destroy', site, data: {:confirm => 'Are you sure?'}, :method => :delete

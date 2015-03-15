@@ -1,0 +1,25 @@
+h1
+  |サイト
+  .pull-right = link_to 'Edit', edit_site_path(@site), class: 'btn btn-default'
+
+table.table
+  tr
+    th URL
+  tr
+    td
+      = @site.url
+      = link_to '今すぐチェック', check_site_path(@site),class: 'btn btn-default btn-sm'
+
+h1 結果
+
+table.table
+  tr
+    th ID
+    th 内容
+    th 取得日時
+
+  - @site.results.order('results.id DESC').each do |result|
+    tr
+      td = link_to result.id, result
+      td = truncate result.response_body
+      td = result.created_at.to_s

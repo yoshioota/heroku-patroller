@@ -1,0 +1,14 @@
+{
+  "name": "Heroku Patroller",
+  "repository": "https://github.com/yoshioota/heroku-patroller",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "addons": [
+    "heroku-postgresql",
+    "scheduler",
+    "papertrail",
+    "memcachier"
+  ]
+}

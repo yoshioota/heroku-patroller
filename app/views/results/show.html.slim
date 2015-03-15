@@ -1,0 +1,16 @@
+.pull-right
+  = link_to '削除', result_path(@result), data: {:confirm => 'Are you sure?'}, class: 'btn btn-default', method: :delete
+
+table.table
+  tr
+    td サイト
+    td = link_to @result.site.url, site_path(@result.site)
+
+  tr
+    td 取得日時
+    td = @result.created_at.to_s
+
+  tr
+    td 内容
+    td
+      pre = @result.response_body

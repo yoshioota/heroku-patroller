@@ -1,0 +1,38 @@
+DOCTYPE
+  html
+    head
+      title ヘロクパトローラー
+      = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+      = javascript_include_tag 'application', 'data-turbolinks-track' => true
+      = csrf_meta_tags
+
+    body
+
+      nav.navbar.navbar-default.navbar-static-top role="navigation"
+        .container-fluid
+          .navbar-header
+            button.navbar-toggle.collapsed data-target="#top-navbar" data-toggle="collapse" type="button"
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+
+            = link_to 'ヘロクパトローラー', '/', class: 'navbar-brand'
+
+          #top-navbar.navbar-collapse.collapse
+            ul.nav.navbar-nav
+              li*{class: ('sites' === controller_name ? 'active' : '')}
+                = link_to sites_path do
+                  |サイト一覧
+
+      .container
+        = render partial: 'shared/breadcrumbs'
+
+      .container
+        .row
+          .col-xs-12.js-alert-area
+            - if flash.present?
+              - flash.each do |type, msg|
+                = render partial: 'shared/alert_check', locals: {alert_type: convert_alert_ype(type), msg: msg}
+
+      div*{class: content_for?(:container) ? yield(:container) : 'container'}
+        = yield
